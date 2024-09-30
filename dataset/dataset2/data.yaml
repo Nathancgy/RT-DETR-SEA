@@ -1,0 +1,7 @@
+# dataset path
+path: /root/rtdetr/
+train: ./dataset/d2/images/train
+val: ./dataset/d2/images/val
+
+nc: 8
+names: ['0', '1', '2', '3', '4', 'Fishing wastes', 'Glass wastes', 'Plastic wastes']

@@ -1,0 +1,6 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['Fishing net', 'aluminum can', 'bottle', 'plastic bag', 'plastic waste', 'tire']
