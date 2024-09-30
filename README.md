@@ -13,7 +13,8 @@ To address these challenges, this project proposes a **S**mall Object **E**nhanc
 To replicate the results:
 
 1. Adjust the relative paths in the `data.yaml` file to match your dataset location.
-2. Run the `train.py` script:
+2. Adjust the config files in `ultralytics/cfg/models/rt-detr/` to `train.py`.
+3. Run the `train.py` script:
 ```bash
 python train.py
 ```
