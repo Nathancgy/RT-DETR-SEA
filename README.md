@@ -1,5 +1,7 @@
 # RT-DETR-SEA: Small Object Enhanced Architecture for Beach Debris Detection
 
+![method overview](./img/method.png)
+
 RT-DETR-SEA is an enhanced architecture for small object detection in complex natural environments, specifically designed for detecting marine debris on beaches using drone imagery.
 
 ## Abstract
@@ -57,8 +59,6 @@ Note: It's recommended to use Anaconda to create a virtual environment for this 
 For more information on the `develop` installation method, refer to [this explanation](https://blog.csdn.net/qq_16568205/article/details/110433714).
 
 ## Key Features
-
-![method overview](./img/method.png)
 
 - **SPDConv Layer**: Integrated into the P2 feature layer to capture spatial information.
 - **CSPOmniKernel Module**: Introduced after feature concatenation for multi-scale feature representation.

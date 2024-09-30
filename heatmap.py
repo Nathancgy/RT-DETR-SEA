@@ -158,10 +158,9 @@ class rtdetr_heatmap:
         
         return torch.cat([boxes_, logits_], dim=1)
     
-    def draw_detections(self, box, color, name, img):
+    def draw_detections(self, box, color, img):
         xmin, ymin, xmax, ymax = list(map(int, list(box)))
         cv2.rectangle(img, (xmin, ymin), (xmax, ymax), tuple(int(x) for x in color), 2)
-        cv2.putText(img, str(name), (xmin, ymin - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, tuple(int(x) for x in color), 2, lineType=cv2.LINE_AA)
         return img
 
     def renormalize_cam_in_bounding_boxes(self, boxes, image_float_np, grayscale_cam):
@@ -200,7 +199,8 @@ class rtdetr_heatmap:
         if self.show_box:
             for data in pred:
                 data = data.cpu().detach().numpy()
-                cam_image = self.draw_detections(data[:4], self.colors[int(data[4:].argmax())], f'{self.model_names[int(data[4:].argmax())]} {float(data[4:].max()):.2f}', cam_image)
+                class_id = int(data[4:].argmax())
+                cam_image = self.draw_detections(data[:4], self.colors[class_id], cam_image)
         cam_image = cv2.resize(cam_image, (ori_w, ori_h))
         cam_image = Image.fromarray(cam_image)
         cam_image.save(save_path)
@@ -220,7 +220,7 @@ class rtdetr_heatmap:
 
 def get_params():
     params = {
-        'weight': 'weights/rtdetr-r18.pt',
+        'weight': 'runs/train/soep25d1/weights/best.pt',
         'device': 'cuda:0',
         'method': 'GradCAMPlusPlus', # GradCAMPlusPlus, GradCAM, XGradCAM, EigenCAM, HiResCAM, LayerCAM, RandomCAM, EigenGradCAM
         'layer': [15,19,22,25],
@@ -234,4 +234,4 @@ def get_params():
 
 if __name__ == '__main__':
     model = rtdetr_heatmap(**get_params())
-    model(r'/home/hjj/Desktop/dataset/dataset_voc/images', 'result')
+    model(r'/root/rtdetr/heatmap', 'result')
