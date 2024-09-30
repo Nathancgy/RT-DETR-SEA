@@ -29,6 +29,10 @@ Several scripts are provided for visualizing results:
 - `heatmap.py`: Generates heatmaps for model interpretability.
 - `get_FPS.py`: Measures the frames per second (FPS) performance of the model.
 
+`plot_result.py`
+
+<img src="./img/metric_curve.png" alt="plot_result" width="50%"/>
+
 ## Architecture Comparison
 
 To compare the architectural differences between the baseline model and RT-DETR-SEA, refer to the configuration files in the `ultralytics/cfg/models/rt-detr` directory.
@@ -66,6 +70,8 @@ For more information on the `develop` installation method, refer to [this explan
 - **Efficiency**: 46.86% higher frames per second (FPS) rate than simply adding a P2 layer.
 
 ## Results
+
+![results](./img/bar.png)
 
 Through ablation study and comparison with different models on three distinct datasets focused on marine debris, our RT-DETR-SEA showed:
 
